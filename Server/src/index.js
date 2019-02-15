@@ -80,6 +80,7 @@ const server = new ApolloServer({
   },
 });
 
+app.use(express.static('public'));
 server.applyMiddleware({ app, path: '/graphql' });
 
 const httpServer = http.createServer(app);
