@@ -1,5 +1,11 @@
-export const LANDING = '/';
+export const LANDING = '/index';
 export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
+export const SHOP = '/shop';
+export const FEATURES = '/features';
+export const BLOG = '/blog';
+export const ABOUT = '/about';
+export const CONTACT = '/contact';
+export const SALE = '/sale';

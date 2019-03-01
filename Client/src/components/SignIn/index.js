@@ -16,9 +16,15 @@ const SIGN_IN = gql`
 `;
 
 const SignInPage = ({ history, refetch }) => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm history={history} refetch={refetch} />
+  <div class="form-center">
+    <div class="form__header">
+      <h1>SignIn</h1>
+    </div>
+    <SignInForm
+      history={history}
+      refetch={refetch}
+      className="form__body"
+    />
     <SignUpLink />
   </div>
 );
@@ -58,7 +64,10 @@ class SignInForm extends Component {
     return (
       <Mutation mutation={SIGN_IN} variables={{ login, password }}>
         {(signIn, { data, loading, error }) => (
-          <form onSubmit={event => this.onSubmit(event, signIn)}>
+          <form
+            onSubmit={event => this.onSubmit(event, signIn)}
+            className="form__body"
+          >
             <input
               name="login"
               value={login}

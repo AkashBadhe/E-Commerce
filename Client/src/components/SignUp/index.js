@@ -22,9 +22,15 @@ const INITIAL_STATE = {
 };
 
 const SignUpPage = ({ history, refetch }) => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm history={history} refetch={refetch} />
+  <div class="form-center">
+    <div class="form__header">
+      <h1>SignUp</h1>
+    </div>
+    <SignUpForm
+      history={history}
+      refetch={refetch}
+      className="form__body"
+    />
   </div>
 );
 
@@ -70,7 +76,10 @@ class SignUpForm extends Component {
         variables={{ username, email, password }}
       >
         {(signUp, { data, loading, error }) => (
-          <form onSubmit={event => this.onSubmit(event, signUp)}>
+          <form
+            onSubmit={event => this.onSubmit(event, signUp)}
+            className="form__body"
+          >
             <input
               name="username"
               value={username}
