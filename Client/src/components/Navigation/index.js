@@ -28,21 +28,19 @@ export class Navigation extends Component {
     const { session } = this.props;
     return (
       <div>
-        {session && session.me ? (
-          <NavigationAuth session={session} />
-        ) : (
-          <NavigationNonAuth
-            menuBar={
-              <BottomHeader
-                onChange={this.onChange}
-                onSelect={this.onSelect}
-              />
-            }
-            topBar={<TopBar />}
-            topBarMobile={<HeaderMobile />}
-            menuBarMobile={<HeaderMenu />}
-          />
-        )}
+        <NavigationNonAuth
+          menuBar={
+            <BottomHeader
+              onChange={this.onChange}
+              onSelect={this.onSelect}
+              user={session && session.me}
+            />
+          }
+          topBar={<TopBar user={session && session.me} />}
+          topBarMobile={<HeaderMobile />}
+          menuBarMobile={<HeaderMenu />}
+        />
+        )
       </div>
     );
   }
