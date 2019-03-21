@@ -16,11 +16,6 @@ export default gql`
     pageInfo: PageInfo!
   }
 
-  type PageInfo {
-    hasNextPage: Boolean!
-    endCursor: String!
-  }
-
   type Product {
     id: ID!
     text: String!
