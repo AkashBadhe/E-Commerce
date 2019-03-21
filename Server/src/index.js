@@ -97,7 +97,7 @@ connectDb().then(async () => {
       models.Message.deleteMany({}),
     ]);
 
-    createUsersWithMessages(new Date());
+    createInitialData(new Date());
   }
 
   httpServer.listen({ port }, () => {
@@ -105,7 +105,7 @@ connectDb().then(async () => {
   });
 });
 
-const createUsersWithMessages = async date => {
+const createInitialData = async date => {
   const user1 = new models.User({
     username: 'rwieruch',
     email: 'hello@robin.com',
@@ -117,6 +117,12 @@ const createUsersWithMessages = async date => {
     username: 'ddavids',
     email: 'hello@david.com',
     password: 'ddavids',
+  });
+
+  const user3 = new models.User({
+    username: 'Akash Badhe',
+    email: 'askext@gmail.com',
+    password: 'Askext@003',
   });
 
   const message1 = new models.Message({
@@ -137,10 +143,33 @@ const createUsersWithMessages = async date => {
     userId: user2.id,
   });
 
+  const product1 = new models.Product({
+    title: 'Product 1',
+    price: '3$',
+    createdAt: date.setSeconds(date.getSeconds() + 1),
+    userId: user1.id,
+  });
+  const product2 = new models.Product({
+    title: 'Product 2',
+    price: '2$',
+    createdAt: date.setSeconds(date.getSeconds() + 1),
+    userId: user1.id,
+  });
+  const product3 = new models.Product({
+    title: 'Product 3',
+    price: '3$',
+    createdAt: date.setSeconds(date.getSeconds() + 1),
+    userId: user1.id,
+  });
+
   await message1.save();
   await message2.save();
   await message3.save();
+  await product1.save();
+  await product2.save();
+  await product3.save();
 
   await user1.save();
   await user2.save();
+  await user3.save();
 };

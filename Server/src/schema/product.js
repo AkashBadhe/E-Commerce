@@ -7,7 +7,7 @@ export default gql`
   }
 
   extend type Mutation {
-    createProduct(text: String!): Product!
+    createProduct(title: String!, price: String!): Product!
     deleteProduct(id: ID!): Boolean!
   }
 
@@ -18,7 +18,8 @@ export default gql`
 
   type Product {
     id: ID!
-    text: String!
+    title: String!
+    price: String!
     createdAt: Date!
     user: User!
   }

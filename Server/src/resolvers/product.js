@@ -52,7 +52,7 @@ export default {
         const product = await models.Product.create({
           title,
           price,
-          createdBy: me.id,
+          userId: me.id,
         });
 
         pubsub.publish(EVENTS.PRODUCT.CREATED, {
