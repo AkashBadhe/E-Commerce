@@ -25,6 +25,6 @@ logfile
 
 node_modules/
 
-Client/
-
 Design/
+
+Client/public
