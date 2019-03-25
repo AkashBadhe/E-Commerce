@@ -39,13 +39,36 @@ export default class Search extends React.Component {
 
   retrieveDataAsynchronously = searchText => {
     let _this = this;
-    fetch('http://localhost:8000/api/test')
+    fetch('http://localhost:8000/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `{
+        products{
+            edges{
+              title,
+              price
+            }
+        }
+      }`,
+      }),
+    })
       .then(r => r.json())
       .then(r => {
-        let data = r.data.filter(a => {
-          const regex = new RegExp(searchText, 'gi');
-          return a.label.match(regex);
-        });
+        let data =
+          r && r.data
+            ? r.data.products.edges
+                .filter(a => {
+                  const regex = new RegExp(searchText, 'gi');
+                  return a.title.match(regex);
+                })
+                .map(item => {
+                  return {
+                    label: item.title,
+                    value: item.price,
+                  };
+                })
+            : [];
         _this.setState({
           autocompleteData: data,
         });
@@ -145,7 +168,10 @@ export default class Search extends React.Component {
   renderItem(item, isHighlighted) {
     return (
       <div
-        style={{ background: isHighlighted ? 'lightgray' : 'white' }}
+        style={{
+          background: isHighlighted ? 'lightgray' : 'white',
+          paddingLeft: '30px',
+        }}
       >
         {item.label}
       </div>

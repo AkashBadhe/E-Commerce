@@ -2422,23 +2422,16 @@ input.num-product::-webkit-inner-spin-button {
   margin: 10px 30px;
 }
 
-.search-box__container{
-  width: 50%;
-  border: 1px solid black;
-  border-radius: 50px;
-  background-color: black;
-  color: white;
-}
-
 .search-box__container input {
   width: 875px;
   padding: 10px 30px;
+  border: 1px solid black !important;
+  border-radius: 50px;
 }
 
-.search__button{
-  right: 13px;
-  color: white;
-
+.search__button {
+  right: 44px;
+  position: relative;
 }
 .search__icon{
   font-size: 18px;

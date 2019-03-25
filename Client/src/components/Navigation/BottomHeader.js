@@ -28,10 +28,8 @@ const BottomHeader = props => {
       {/* Search */}
       <div className="pos-relative of-hidden search-box__container">
         <Search />
-        <button className="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4 search__button">
-          <i className="fs-13 fa fa-search search__icon" aria-hidden="true" />
-        </button>
       </div>
+      <div sytle="clear: both" />
 
       {/* Header Icon */}
       <div className="header-icons">
